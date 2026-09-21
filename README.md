@@ -1,6 +1,6 @@
 # Machine Learning Interview Questions and Answers (2026)
 
-**67 machine learning interview questions with answers**, covering ML fundamentals,
+**69 machine learning interview questions with answers**, covering ML fundamentals,
 deep learning, computer vision, NLP, dimensionality reduction, statistics and coding.
 Curated and community-maintained since 2018.
 
@@ -22,7 +22,7 @@ These ML interview questions are useful if you are preparing for a role as:
 - [Algorithms and Ensembles](#algorithms-and-ensembles) — 3 questions
 - [Data Preprocessing and Feature Engineering](#data-preprocessing-and-feature-engineering) — 4 questions
 - [Optimization and Training](#optimization-and-training) — 6 questions
-- [Deep Learning and Neural Networks](#deep-learning-and-neural-networks) — 12 questions
+- [Deep Learning and Neural Networks](#deep-learning-and-neural-networks) — 13 questions
 - [Computer Vision](#computer-vision) — 13 questions
 - [Dimensionality Reduction](#dimensionality-reduction) — 7 questions
 - [Model Evaluation and Validation](#model-evaluation-and-validation) — 7 questions
@@ -44,23 +44,23 @@ If our model is too simple and has very few parameters then it may have high bia
 
 [[Answer]](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)
 
-ML/DL models essentially learn a relationship between its given inputs(called training features) and objective outputs(called labels). Regardless of the quality of the learned relation(function), its performance on a test set(a collection of data different from the training input) is subject to investigation.
+ML models learn a relationship between inputs (called training features) and outputs (called labels). After fitting on a training dataset, the model's performance on a held-out test set must be evaluated to determine how well it generalizes to unseen data.
 
-Most ML/DL models have trainable parameters which will be learned to build that input-output relationship. Based on the number of parameters each model has, they can be sorted into more flexible(more parameters) to less flexible(less parameters).
+Modern ML models have trainable parameters that are learned to build this input-output relationship. The more parameters a model has, the more complex a relationship it can learn between inputs and targets.
 
-The problem of Underfitting arises when the flexibility of a model(its number of parameters) is not adequate to capture the underlying pattern in a training dataset. Overfitting, on the other hand, arises when the model is too flexible to the underlying pattern. In the later case it is said that the model has “memorized” the training data.
+Underfitting occurs when the flexibility of a model is not sufficient to capture the underlying pattern in a training dataset. Overfitting, on the other hand, occurs when a model is too flexible and effectively memorizes the training data.
 
-An example of underfitting is estimating a second order polynomial(quadratic function) with a first order polynomial(a simple line). Similarly, estimating a line with a 10th order polynomial would be an example of overfitting.
+An example of underfitting is estimating a second-order polynomial (quadratic function) with a first-order polynomial (a simple line). Similarly, estimating a line with a tenth-order polynomial would be an example of overfitting.
 
 [[src]](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)
 
 ### What is regularization, why do we use it, and give some examples of common methods?
 
-A technique that discourages learning a more complex or flexible model, so as to avoid the risk of overfitting. 
+Regularization is a technique that discourages learning a more complex or flexible model to combat overfitting.
 Examples
- - Ridge (L2 norm)
- - Lasso (L1 norm)  
-The obvious *disadvantage* of **ridge** regression, is model interpretability. It will shrink the coefficients for least important predictors, very close to zero. But it will never make them exactly zero. In other words, the *final model will include all predictors*. However, in the case of the **lasso**, the L1 penalty has the effect of forcing some of the coefficient estimates to be *exactly equal* to zero when the tuning parameter λ is sufficiently large. Therefore, the lasso method also performs variable selection and is said to yield sparse models.
+  - Ridge (L2 norm)
+  - Lasso (L1 norm)
+The obvious *disadvantage* of **ridge** (L2) regression is model interpretability. It shrinks the coefficients for the least important predictors close to zero, but never makes them exactly zero. In other words, the *final model includes all predictors*, although some may have very little influence. In the case of **lasso** (L1) regularization, the penalty can force some coefficient estimates to be *exactly equal* to zero when the tuning parameter λ is sufficiently large. Therefore, lasso also performs variable selection and yields sparse models.
 [[src]](https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a)
 
 [[src]](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)
@@ -178,6 +178,8 @@ We apply Label Encoding when:
 
 Gradient descent is an optimization algorithm used to find the values of parameters (coefficients) of a function (f) that minimizes a cost function (cost).
 
+It does this iteratively by calculating the gradient of the cost function and updating the parameters in the direction that reduces the error on the next iteration.
+
 Gradient descent is best used when the parameters cannot be calculated analytically (e.g. using linear algebra) and must be searched for by an optimization algorithm.
 
 [[src]](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)
@@ -209,6 +211,10 @@ Stochastic gradient descent (SGD) computes the gradient using a single sample. S
  - **Iteration**: number of training examples / Batch size
 
 ## Deep Learning and Neural Networks
+
+### How does a neural network work?
+
+A neural network is a function approximator that learns transformations between inputs and outputs by propagating information through layers of neurons. At its simplest, a neural network computes `y = f(Wx + b)`, where `W` contains the weights, `b` contains the biases, and `f` is a nonlinear activation function. The weights and biases are learned during training through backpropagation.
 
 ### Why is ReLU better and more often used than Sigmoid in Neural Networks?
 
@@ -407,6 +413,8 @@ Recurrent Convolutional model is a model that is specially designed to make pred
 ## Dimensionality Reduction
 
 ### How do you combat the curse of dimensionality?
+
+The curse of dimensionality refers to the problems that can occur when working with high-dimensional data. Different features may capture the same information, add little value to a model, or make the problem unnecessarily complex. Common ways to address it include reducing the dimensions of the input space through:
 
 - Feature Selection(manual or via statistical methods)
  - Principal Component Analysis (PCA)
